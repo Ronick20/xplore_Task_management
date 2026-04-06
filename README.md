@@ -360,5 +360,5 @@ For issues and questions, please refer to the documentation or create an issue i
 
 # Author
 
-ARUDDHRA NAGARAJ
+RONICK
 M.Sc.,Software Systems
