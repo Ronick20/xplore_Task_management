@@ -1,0 +1,28 @@
+{
+  "name": "task_management_admin-employee",
+  "version": "1.0.0",
+  "description": "A comprehensive web application built with the MERN stack (MongoDB, Express.js, React.js, Node.js) for managing employee registrations, task assignments, and task tracking.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AruddhraNagaraj27/Task_Management_Admin-Employee.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AruddhraNagaraj27/Task_Management_Admin-Employee/issues"
+  },
+  "homepage": "https://github.com/AruddhraNagaraj27/Task_Management_Admin-Employee#readme",
+  "dependencies": {
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1"
+  }
+}

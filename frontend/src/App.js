@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import { AuthContext, AuthProvider } from './context/AuthContext';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
@@ -23,41 +23,55 @@ const PrivateRoute = ({ children, requiredRole }) => {
   return children;
 };
 
-function AppContent() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route
-          path="/admin/dashboard"
-          element={
-            <PrivateRoute requiredRole="admin">
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/employee/register" element={<EmployeeRegister />} />
-        <Route path="/employee/login" element={<EmployeeLogin />} />
-        <Route
-          path="/employee/dashboard"
-          element={
-            <PrivateRoute requiredRole="employee">
-              <EmployeeDashboard />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </Router>
-  );
-}
+// Define routes using createBrowserRouter
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <LandingPage />,
+    },
+    {
+      path: '/admin/login',
+      element: <AdminLogin />,
+    },
+    {
+      path: '/admin/dashboard',
+      element: (
+        <PrivateRoute requiredRole="admin">
+          <AdminDashboard />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: '/employee/register',
+      element: <EmployeeRegister />,
+    },
+    {
+      path: '/employee/login',
+      element: <EmployeeLogin />,
+    },
+    {
+      path: '/employee/dashboard',
+      element: (
+        <PrivateRoute requiredRole="employee">
+          <EmployeeDashboard />
+        </PrivateRoute>
+      ),
+    },
+  ],
+  {
+    future: {
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+    },
+  }
+);
 
 function App() {
   return (
     <AuthProvider>
-      <AppContent />
+      <RouterProvider router={router} />
     </AuthProvider>
   );
 }
-
 export default App;
